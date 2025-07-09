@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, PostCard } from "../components/Index";
+import Container from "../components/container/Container";
+import PostCard from "../components/PostCard";
 import appwriteService from "../appwrite/config";
 
 function AllPosts() {
