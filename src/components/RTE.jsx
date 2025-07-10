@@ -7,7 +7,7 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
     <div className="w-full">
       {label && <label className="inline-block mb-1 pl-1">{label}</label>}
 
-      <controller
+      <Controller
         name={name || "content"}
         control={control}
         render={({ field: { onChange } }) => (
@@ -15,7 +15,7 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
             initialValue={defaultValue}
             init={{
               initialValue: defaultValue,
-              height: 300,
+              height: 500,
               menubar: true,
               plugins: [
                 "image",

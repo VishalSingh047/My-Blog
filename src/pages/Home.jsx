@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
-import Container from "../components/container/Container";
-import PostCard from "../components/PostCard";
+import { Container, PostCard } from "../components";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -9,7 +8,7 @@ function Home() {
   useEffect(() => {
     appwriteService.getPosts().then((posts) => {
       if (posts) {
-        setPosts(posts);
+        setPosts(posts.documents);
       }
     });
   }, []);
@@ -29,7 +28,6 @@ function Home() {
       </div>
     );
   }
-
   return (
     <div className="w-full py-8">
       <Container>

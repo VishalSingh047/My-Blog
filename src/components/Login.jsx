@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice";
-import { Button, Input, Logo } from ".";
+import { Button, Input, Logo } from "./index";
 import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
@@ -23,7 +23,6 @@ function Login() {
       }
     } catch (error) {
       setError(error.message);
-      sss;
     }
   };
 
@@ -32,7 +31,7 @@ function Login() {
       <div
         className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
       >
-        <div className="mb-22 flex justify-center">
+        <div className="mb-2 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
             <Logo width="100%" />
           </span>
@@ -60,22 +59,19 @@ function Login() {
                 required: true,
                 validate: {
                   matchPatern: (value) =>
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(
-                      value
-                    ) || "Email address must be a valid address",
+                    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                    "Email address must be a valid address",
                 },
               })}
             />
-
             <Input
               label="Password: "
               type="password"
-              placeholder="Enter your Password"
+              placeholder="Enter your password"
               {...register("password", {
                 required: true,
               })}
             />
-
             <Button type="submit" className="w-full">
               Sign in
             </Button>
